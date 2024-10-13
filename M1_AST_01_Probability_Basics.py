@@ -298,3 +298,56 @@ plt.ylabel("Cumulative Probability")
 plt.title("Cumulative Distribution Function (CDF)")
 plt.grid(True)
 plt.show()
+
+## Joint PMF ##
+
+# Consider the probability experiment where a fair coin is tossed three times and the sequence of heads and tails are recorded. 
+# Let random variable  X  denote the number of heads obtained and random variable Y denote the winnings earned 
+# in a single play of a game with the following rules, based on the outcomes of the probability experiment:
+    # a player wins 1 point if first head occurs on the first toss
+    # a player wins 2 points if first head occurs on the second toss
+    # a player wins 3 points if first head occurs on the third toss
+    # a player loses 1 point if no head occur
+# Represent the joint pmf of  X  and  Y  in tabular form
+
+# The possible values of X and Y are
+X = [0,1,2,3]
+Y = [-1,1,2,3]
+
+# Represent joint pmf using table
+df3 = pd.DataFrame(columns= ['X=0', 'X=1', 'X=2', 'X=3'], index=['Y=-1', 'Y=1', 'Y=2', 'Y=3'])
+df3
+
+df3.iloc[0,0] = 1/8   # P(X=0, Y=-1)  Cases when no heads has occur {TTT}
+df3.iloc[1,1] = 1/8   # P(X=1, Y=1)  Cases when first head occurs at first toss and number of heads occur is one {HTT}
+df3.iloc[1,2] = 2/8   # P(X=2, Y=1)  Cases when first head occurs at first toss and number of heads occur is two {HTH, HHT}
+df3.iloc[1,3] = 1/8   # P(X=3, Y=1)  Cases when first head occurs at first toss and number of heads occur is three {HHH}
+df3.iloc[2,1] = 1/8   # P(X=1, Y=2)  Cases when first head occurs at second toss and number of heads occur is one {THT}
+df3.iloc[2,2] = 1/8   # P(X=2, Y=2)  Cases when first head occurs at second toss and number of heads occur is two {THH
+df3.iloc[3,1] = 1/8   # P(X=1, Y=3)  Cases when first head occurs at third toss and number of heads occur is one {TTH}
+df3
+
+# For cases like, when first head occurs at first toss and number of heads occur is 0, the values will be 0, as no such outcomes are possible
+df3.fillna(0, inplace= True)
+df3
+
+# Cross check the total of Joint PMF should be = 1
+sum(sum(df3.values))
+
+## Joint PDF ##
+
+# Using ∫∫ f(x,y)dxdy = 1
+
+# ∫∫ (x + c.y**2)dxdy = 1
+# ∫∫ x.dxdy + ∫∫ c.y**2.dxdy = 1
+# c = (1 - ∫∫ x.dxdy) / ∫∫ y**2.dxdy
+c = (1 - integrate.dblquad(lambda y,x: x, 0,1,0,1)[0]) / integrate.dblquad(lambda y,x: y**2, 0,1,0,1)[0]
+print('c= ', round(c,1))
+
+# Find  P(0≤X≤1/2, 0≤Y≤1/2)
+
+p = integrate.dblquad(lambda y,x: x + c*y**2, 0, 1/2, 0, 1/2)[0]
+print('P(0 ≤ X ≤ 1/2, 0 ≤ Y ≤ 1/2)= ', round(p,4))
+
+# Cross check the total probability should be ≈ 1
+integrate.dblquad(lambda y,x: x + c*y**2, 0, 1, 0, 1)[0]
