@@ -43,3 +43,46 @@ playstore_data = playstore_data.drop_duplicates(['App'],keep='first')
 
 # Check for any null values
 playstore_data.isnull
+
+# Check datatype of each column
+playstore_data.dtypes
+
+### FIND OUT THE NON-ENGLISH APPS ###
+
+def is_English(string):
+    spl_count = 0
+    for character in string:
+        if ord(character) > 127:
+            spl_count += 1
+    if spl_count > len(string) // 2:
+        return False
+    return True
+
+# Find the Non-English Apps
+playstore_data[~playstore_data['App'].apply(is_English)]
+
+# Filter the Non English Apps
+playstore_data = playstore_data[playstore_data['App'].apply(is_English)]
+playstore_data.shape
+
+# In the size column, multiply 1000,000 with M in the cell and multiply by 1000 if we have K in the cell
+
+playstore_data.Size.value_counts()
+
+playstore_data ['Size'] = playstore_data ['Size'].apply(lambda x: str(x).replace('Varies with device','NaN') if 'Varies with device' in x else x)
+playstore_data ['Size'] = playstore_data ['Size'].apply(lambda x: float(str(x).rstrip('M'))*(10**6) if 'M' in str(x) else x)
+playstore_data['Size'] = playstore_data['Size'].apply(lambda x: float(str(x).rstrip('k'))*(10**3) if 'k' in str(x) else x)
+playstore_data = playstore_data[~(playstore_data['Size'] == 'NaN')]
+playstore_data['Size'] = playstore_data['Size'].astype(float)
+
+
+''' Task 2: Visualisation '''
+
+# Find the number of apps in various categories by using an appropriate plot
+
+playstore_data['Category'].nunique()
+
+count_of_Apps = playstore_data['Category'].value_counts()
+count_of_Apps
+
+count_of_Apps.index.values
