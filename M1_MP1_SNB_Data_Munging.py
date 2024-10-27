@@ -86,3 +86,34 @@ count_of_Apps = playstore_data['Category'].value_counts()
 count_of_Apps
 
 count_of_Apps.index.values
+
+plt.figure(figsize=(10,15))
+plt.pie(count_of_Apps, labels = count_of_Apps.index.values, autopct='%1.1f%%')
+plt.show()
+
+# Explore the distribution of free and paid apps across different categories
+
+free_apps = playstore_data[playstore_data.Type == 'Free']
+paid_apps = playstore_data[playstore_data.Type == 'Paid']
+paid_apps.shape, free_apps.shape
+
+paid_categories = paid_apps['Category'].value_counts()
+free_categories = free_apps['Category'].value_counts()
+paid_categories
+
+len(free_categories), len(paid_categories)
+
+N = 10
+
+idx = np.arange(N)
+
+p1 = plt.bar(idx, free_categories.values[:10])
+p2 = plt.bar(idx, paid_categories.values[:10], bottom = free_categories.values[:10])
+
+plt.xticks(idx, free_categories.index[:10], rotation=35)
+plt.legend((p1[0], p2[0]),('Free', 'Paid'))
+plt.show()
+
+# Represent the distribution of app rating on a scale of 1-5 using an appropriate plot
+
+ratings = playstore_data
