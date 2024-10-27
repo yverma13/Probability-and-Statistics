@@ -116,6 +116,9 @@ plt.show()
 
 # Represent the distribution of app rating on a scale of 1-5 using an appropriate plot
 
-ratings = playstore_data
+ratings = playstore_data['Rating']
 
-#test
+plt.hist(ratings, bins=5)
+plt.title('Rating Distribution')
+plt.xlabel('Ratings')
+plt.show()
