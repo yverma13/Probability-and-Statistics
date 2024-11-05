@@ -122,3 +122,91 @@ plt.hist(ratings, bins=5)
 plt.title('Rating Distribution')
 plt.xlabel('Ratings')
 plt.show()
+
+# Identify outliers of the rating column by plotting the boxplot category wise and handle them.
+
+df_categories = playstore_data.groupby('Category').filter(lambda x: len(x) >= 120)
+
+sns.boxplot(y=df_categories.Rating, x=df_categories.Category, data=playstore_data);
+plt.xticks(rotation=50)
+plt.xlabel('Categories',fontsize=17,fontweight='bold',color='#191970', )
+plt.ylabel('Ratings', fontsize=17, fontweight='bold',color='#191970')
+plt.show()
+
+def remove_outliers(data):
+    data_mean, data_std = data.mean(), data.std()
+    cut_off = data_std * 3
+    lower, upper = data_mean - cut_off, data_mean + cut_off
+    outliers_removed = [x if x > lower and x < upper else data_mean for x in data]
+    return outliers_removed
+
+playstore_data['Rating'] = remove_outliers(playstore_data['Rating'])
+
+df_categories = playstore_data.groupby('Category').filter(lambda x: len(x) >= 120)
+
+sns.boxplot(y=df_categories.Rating, x=df_categories.Category,data=playstore_data);
+plt.xticks(rotation=50)
+plt.xlabel('Categories',fontsize=17, fontweight='bold', color='#191970', )
+plt.ylabel('Ratings', fontsize=17, fontweight='bold', color='#191970')
+
+# Plot the barplot of all the categories indicating no. of installs
+
+playstore_data['Installs'] = playstore_data['Installs'].str.rstrip('+').str.replace(',','')
+playstore_data['Installs'] = playstore_data['Installs'].astype(int)
+
+temp_df = playstore_data.groupby(['Category']).agg({'Installs':'sum'}).sort_values(by='Installs',ascending=False).reset_index()
+
+sns.barplot(x=temp_df['Installs'],y=temp_df['Category'])
+plt.yticks(rotation=10)
+plt.xlabel('Installs',fontsize=15,color='#191970')
+plt.ylabel('Categories', fontsize=15, color='#191970')
+plt.show()
+
+
+''' Task 3: Insights '''
+
+# Does price correlate with the size of the app? We will see that they do not correlate!
+
+playstore_data['Price'].unique()
+
+playstore_data['Price'] = playstore_data['Price'].str.lstrip('$')
+playstore_data['Price'] = playstore_data['Price'].astype(float)
+
+sns.lmplot(x='Price', y='Size', data=playstore_data, fit_reg=False)
+plt.show()
+
+# Find the popular app categories based on rating and no. of installs
+
+popular_categories = playstore_data.groupby(['Category']).agg({'Installs':'sum','Rating':'sum'}).sort_values(by='Rating',ascending=False).reset_index()
+popular_categories.head()
+
+# Average rating
+
+popular_categories1 = playstore_data.groupby(['Category']).Rating.mean().sort_values(ascending=False).reset_index()
+popular_categories1
+
+# How many apps are produced in each year category-wise?
+
+playstore_data["Year"] = playstore_data['Last Updated'].str[-4:]
+playstore_data["Year"].unique()
+
+App2018 = playstore_data["Year"]=="2018"
+
+plt.title('Downloads in 2018')
+plt.xticks(rotation = 'vertical')
+sns.countplot(hue = 'Year', x = 'Category', data = App2018)
+
+App2017 = playstore_data[playstore_data["Year"]== "2017"]
+plt.title('Downloads in 2017')
+plt.xticks(rotation = 'vertical')
+sns.countplot(hue = 'Year', x = 'Category', data = App2017)
+
+# Identify the highest paid apps with a good rating
+
+topRated = playstore_data[(playstore_data.Rating > 4.0) & (playstore_data.Type == 'Paid')].sort_values(by='Price',ascending=False)
+topRated['Reviews'].head()
+
+# Are the top-rated apps genuine ? How about checking reviews count of top-rated apps ?
+
+topRated = playstore_data[playstore_data.Rating == playstore_data.Rating.max()]
+idx_topRate = np.arange(0, len(topRated))
