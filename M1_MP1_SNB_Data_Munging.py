@@ -210,3 +210,25 @@ topRated['Reviews'].head()
 
 topRated = playstore_data[playstore_data.Rating == playstore_data.Rating.max()]
 idx_topRate = np.arange(0, len(topRated))
+
+topRated['Reviews'] = topRated['Reviews'].astype(int)
+topRated['Reviews']
+
+topRated['Reviews'].max(), topRated['Reviews'].min()
+
+plt.title("Distribution of Review count for top-rated apps")
+plt.plot(idx_topRate, topRated['Reviews'])
+plt.show()
+
+# Frequency distribution of Reviews count
+sns.displot(playstore_data[playstore_data.Rating == playstore_data.Rating.max()].Reviews)
+plt.show()
+
+# If the number of reviews of an app is very low, what could be the reason for its top-rating?
+
+Apps_Below_review_5 = topRated[topRated['Reviews'] < 5]
+Free_apps_below_ReviewCount5 = Apps_Below_review_5[Apps_Below_review_5['Type'] == 'Free'].shape[0]
+Paid_apps_below_ReviewCount5 = Apps_Below_review_5[Apps_Below_review_5['Type'] == 'Paid'].shape[0]
+Free_apps_below_ReviewCount5 , Paid_apps_below_ReviewCount5
+
+# Conclusion: Most of the top-rated and less reviews are free, that why user rated 5.0
