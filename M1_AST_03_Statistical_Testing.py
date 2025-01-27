@@ -129,7 +129,6 @@ raw_data.columns = raw_data.columns.str.replace(" ","_")
 raw_data['SalaryUSD'] = raw_data['SalaryUSD'].apply(process_salary)
 raw_data['SalaryUSD'].head()
 
-
 # Filter dataframe by year
 df = raw_data[raw_data.Survey_Year == 2019]
 df.head()
