@@ -1,10 +1,10 @@
 # Importing required packages
 import numpy as np
 import pandas as pd
-import scipy                       
-import matplotlib.pyplot as plt     
-import seaborn as sns               
-from scipy import integrate         
+import scipy
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy import integrate
 sns.set_style('whitegrid')
 
 # Load the dataset
