@@ -56,7 +56,7 @@ print('Dataset shape after processing: ', df.shape)
 i1 = np.random.randint(df.shape[0]-1)
 i1
 record = df.iloc[i1:i1+1, :]
-record
+recor
 
 # Calculate the length of sample space for a random experiment of selecting a record from the above given dataset
 len(df.index)
