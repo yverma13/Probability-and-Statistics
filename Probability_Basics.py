@@ -36,8 +36,12 @@ df['department'] = df['department'].apply(lambda x: x.replace(' ',''))
 
 # Change department from 'sweing' to 'sewing'
 for i in range(len(df)):
-    if df.loc[i,'department']=='sweing':
-        df.loc[i,'department']='sewing'
+    if df.loc[i,'department'] == 'sweing':
+        df.loc[i,'department'] = 'sewing'
+
+# OR
+
+df['department'] = df['department'].replace('sweing','sewing')
 
 # Check for unique values in department column
 df['department'].unique()
@@ -50,7 +54,8 @@ print('Dataset shape after processing: ', df.shape)
 
 # Select a record from the above given dataset
 i1 = np.random.randint(df.shape[0]-1)
-record = df.iloc[i1:i1+1, :]             
+i1
+record = df.iloc[i1:i1+1, :]
 record
 
 # Calculate the length of sample space for a random experiment of selecting a record from the above given dataset
