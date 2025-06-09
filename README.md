@@ -1,6 +1,6 @@
 # Probability-and-Statistics
 
-Why do we need probability for Data Science?
+**Why do we need probability for Data Science?**
 
 Learning probability helps in making informed decisions about likelihood of events, based on a pattern of collected data. In the context of data science, statistical inferences are often used to analyze or predict trends from data and these inferences use probability distributions of data. Using probability, we can model elements of uncertainty such as risk in financial transactions and many other business processes such as risk evaluation, sales forecasting, market research etc.
 
