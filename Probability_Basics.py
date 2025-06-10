@@ -58,7 +58,7 @@ i1
 record = df.iloc[i1:i1+1, :]
 record
 
-# Calculate the length of sample space for a random experiment of selecting a record from the above given dataset
+# Calculate the length of the sample space for a random experiment of selecting a record from the above given dataset
 len(df.index)
 
 # Getting a finishing department record is an event related to the experiment of selecting a record from the whole dataset. 
