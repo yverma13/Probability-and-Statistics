@@ -61,15 +61,16 @@ record
 # Calculate the length of the sample space for a random experiment of selecting a record from the above given dataset
 len(df.index)
 
-# Getting a finishing department record is an event related to the experiment of selecting a record from the whole dataset. 
 # Extract a finishing department record.
 df_finishing = df[df['department']=='finishing']
 i2 = np.random.randint(df_finishing.shape[0]-1)
+i2
 selection = df_finishing.iloc[i2:i2+1, :]
 selection
 
 # Show that selecting a finishing department record and selecting a sewing department record are two mutually exclusive events.
 finishing_and_sewing = np.logical_and(df['department']=='finishing',df['department']=='sewing')
+
 finishing_and_sewing.value_counts()
 '''Seen from above there are no records where the department is finishing as well as sewing simultaneously'''
 
