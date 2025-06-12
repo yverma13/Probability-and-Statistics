@@ -70,7 +70,6 @@ selection
 
 # Show that selecting a finishing department record and selecting a sewing department record are two mutually exclusive events.
 finishing_and_sewing = np.logical_and(df['department']=='finishing',df['department']=='sewing')
-
 finishing_and_sewing.value_counts()
 '''Seen from above there are no records where the department is finishing as well as sewing simultaneously'''
 
