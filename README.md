@@ -1,4 +1,4 @@
-# Probability-and-Statistics
+# Probability and Statistics
 
 ### **Why do we need probability for Data Science?**
 
