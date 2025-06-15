@@ -110,10 +110,11 @@ df_new = df.drop(selection.index)
 '''Essentially I have removed the randomly selected row 'selection' from the original DataFrame, df'''
 
 # count of sewing department records
-sewing = df_new['department'] == 'sewing'
+sewing = df_new['department']=='sewing'
 sewing.value_counts()
 
 df_sewing = df_new[sewing]
+df_sewing
 
 # Probability of selecting sewing department record second = count of sewing department records / (all records count - 1) 
 P_sewing_second_given_finishing_first = len(df_sewing)/len(df_new)
