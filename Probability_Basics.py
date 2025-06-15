@@ -93,14 +93,16 @@ finishing = df['department'] == 'finishing'
 finishing.value_counts()
 
 df_finishing = df[finishing]
+df_finishing
 
 # Probability of selecting finishing department record first = count of finishing department records / all records count
 P_finishing_first = len(df_finishing) / len(df)
-print('P(selecting a finishing department record first)= ', round(P_finishing_first,4))
+print('P(selecting a finishing department record first)=', round(P_finishing_first,4))
 
 # Randomly selecting any 'finishing' department record
-i = np.random.randint(len(df_finishing)-1)             # -1 is to start the index numbering at 0 instead of 1
-selection = df_finishing.iloc[i:i+1, :]                # obtaining a single record with index i
+i = np.random.randint(len(df_finishing)-1)      # -1 is to start the index numbering at 0 instead of 1
+i
+selection = df_finishing.iloc[i:i+1, :]         # obtaining a single record with index i
 selection
 
 # As one record is already selected, the total records available becomes one less than total records
