@@ -117,19 +117,21 @@ df_sewing = df_new[sewing]
 df_sewing
 
 # Probability of selecting sewing department record second = count of sewing department records / (all records count - 1) 
-P_sewing_second_given_finishing_first = len(df_sewing)/len(df_new)
-print('P(selecting a sewing department record given finishing department record was selected first)= ',round(P_sewing_second_given_finishing_first,4))
+P_sewing_second_given_finishing_first = len(df_sewing) / len(df_new)
+print('P(selecting a sewing department record given finishing department record was selected first)= ', round(P_sewing_second_given_finishing_first,4))
 
 P_finishing_sewing = P_finishing_first * P_sewing_second_given_finishing_first
 print('P(finishing record first and sewing record second)= ', round(P_finishing_sewing,4))
 
+
 ### Case 2: Getting non-finishing department record in first selection and sewing department record in the second selection
 
 # count of non-finishing department records
-non_finishing = df['department']!='finishing'
+non_finishing = df['department'] != 'finishing'
 non_finishing.value_counts()
 
-df_non_finishing = df[non_finishing] 
+df_non_finishing = df[non_finishing]
+df_non_finishing
 
 # Probability of selecting non-finishing department record first = count of non-finishing department records / all records count
 P_non_finishing_first = len(df_non_finishing)/len(df)
@@ -150,11 +152,8 @@ sewing.value_counts()
 df_sewing = df_new[sewing]
 
 # Probability of selecting sewing department record second = count of sewing department records / (all records count - 1) 
-P_sewing_second_given_non_finishing_first = len(df_sewing)/len(df_new)
-print('P(selecting a sewing department record given non-finishing department record was selected first)= ', round(P_sewing_second_given_non_finishing_first,4))
-
-P_non_finishing_sewing = P_non_finishing_first * P_sewing_second_given_non_finishing_first
-print('P(non-finishing record first and sewing record second)= ', round(P_non_finishing_sewing,4))
+P_sewing_second_given_finishing_first = len(df_sewing) / len(df_new)
+print('P(selecting a sewing department record given finishing department record was selected first)= ', round(P_sewing_second_given_finishing_first,4))
 
 # Check for dependency
 P_finishing_sewing != P_non_finishing_sewing
@@ -361,3 +360,4 @@ print('P(0 ≤ X ≤ 1/2, 0 ≤ Y ≤ 1/2)= ', round(p,4))
 
 # Cross check the total probability should be ≈ 1
 integrate.dblquad(lambda y,x: x + c*y**2, 0, 1, 0, 1)[0]
+
