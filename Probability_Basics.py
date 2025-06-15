@@ -68,15 +68,17 @@ i2
 selection = df_finishing.iloc[i2:i2+1, :]
 selection
 
-# Show that selecting a finishing department record and selecting a sewing department record are two mutually exclusive events.
+# Show that selecting a finishing department record and selecting a sewing department record are 
+# two mutually exclusive events.
 finishing_and_sewing = np.logical_and(df['department']=='finishing',df['department']=='sewing')
 finishing_and_sewing.value_counts()
 '''Seen from above there are no records where the department is finishing as well as sewing simultaneously'''
 
 # Probability of selecting finishing and sewing department records simultaneously
 P = finishing_and_sewing.sum()/len(df)
+P
 print('P(selecting finishing and sewing department records simultaneously)= ', P)
-'''Seen that occurrence of both the events simultaneously is zero hence the above mentioned two events are mutually exclusive'''
+'''Here we see the occurrence of both the events simultaneously is zero hence the above mentioned two events are mutually exclusive'''
 
 # A record is selected at random from the dataset. Without replacing it, a second record is selected. 
 # Show that getting a finishing department record in the first selection and getting a sewing department record
