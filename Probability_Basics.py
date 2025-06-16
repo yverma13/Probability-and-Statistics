@@ -127,18 +127,19 @@ print('P(finishing record first and sewing record second)= ', round(P_finishing_
 ### Case 2: Getting non-finishing department record in first selection and sewing department record in the second selection
 
 # count of non-finishing department records
-non_finishing = df['department'] != 'finishing'
+non_finishing = df['finishing'] != 'finishing'
 non_finishing.value_counts()
 
 df_non_finishing = df[non_finishing]
 df_non_finishing
 
 # Probability of selecting non-finishing department record first = count of non-finishing department records / all records count
-P_non_finishing_first = len(df_non_finishing)/len(df)
+P_non_finishing_first = len(df_non_finishing) / len(df)         
 print('P(selecting a non-finishing department record first)= ', round(P_non_finishing_first,4))
 
 # Randomly selecting any non-'finishing' department record
 i = np.random.randint(len(df_non_finishing)-1)
+i
 selection = df_non_finishing.iloc[i:i+1, :]
 selection
 
