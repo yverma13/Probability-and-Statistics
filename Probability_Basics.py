@@ -315,8 +315,6 @@ for x in x_values:
     cdf_values.append(cumulative_prob)
 print("CDF:", cdf_values)
 
-
-
 # Plotting the CDF
 plt.plot(x_values, cdf_values)
 plt.xlabel("x")
@@ -324,6 +322,8 @@ plt.ylabel("Cumulative Probability")
 plt.title("Cumulative Distribution Function (CDF)")
 plt.grid(True)
 plt.show()
+
+-- help --
 
 ## Joint PMF ##
 
