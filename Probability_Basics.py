@@ -164,16 +164,17 @@ print('P(non-finishing record first and sewing record second)= ', round(P_non_fi
 # Check for dependency
 P_finishing_sewing != P_non_finishing_sewing
 
-# A record is selected among those whose day of week is Monday and also another record is selected among those
-# whose day of week is Saturday. Find the probability of getting a finishing department record from the first 
+# A record is selected among those whose day of the week is Monday and also another record is selected among those
+# whose day of the week is Saturday. Find the probability of getting a finishing department record from the first 
 # selection and a sewing department record from the second selection given both events are independent of each other?
 
 # Display different department and day of week
-print('Department', df['department'].unique)
-print('Day: ', df['day'].unique())
+print('Department', df['department'].unique())
+print('Day:', df['day'].unique())
 
 # Select records having day = 'Monday'
 df_monday = df[df['day']=='Monday']
+df_monday
 
 P_finishing_from_monday = len(df_monday[df_monday['department']=='finishing']) / len(df_monday)
 print('P(selecting finishing department record from Monday records)= ', round(P_finishing_from_monday,4))
@@ -181,28 +182,27 @@ print('P(selecting finishing department record from Monday records)= ', round(P_
 # Select records having day = 'Saturday'
 df_saturday = df[df['day']=='Saturday']
 
-P_sewing_from_saturday = len(df_saturday[df_saturday['department']=='sewing'])/len(df_saturday)
+P_sewing_from_saturday = len(df_saturday[df_saturday['department']=='sewing']) / len(df_saturday)
 print('P(selecting sewing department record from Saturday records)= ', round(P_sewing_from_saturday,4))
 
-# As events are independent,
+# As events are independent
 P_finishing_and_sewing = P_finishing_from_monday * P_sewing_from_saturday
 print('P(getting finishing department from first selection and sewing department from second selection)= ', round(P_finishing_and_sewing,4))
-
 
 # Let  S  is the sample space given below and corresponding  P(X=xi)  is also given, where  X  is a 
 # discrete random variable. Find the probability at  X=0.
 
-df1 = pd.DataFrame({'X=0': '?', 'X=1':0.2, 'X=3':0.3, 'X=4': 0.1}, index= ['P(X=xi)'])
+df1 = pd.DataFrame({'X=0': '?', 'X=1':0.2, 'X=3': 0.3, 'X=4': 0.1}, index= ['P(X=xi)'])
 df1
 
-# For a discrete random variable we know that sum of all P(X=xi) = 1,
+# For a discrete random variable we know that sum of all P(X=xi) = 1
 df1['X=0'] = 1 - sum(df1.iloc[0,1:])
 df1
 
 # Plot the PMF of the discrete random variable X defined as total number of heads while tossing a coin thrice.
 
 # Our sample space would consist of {HHH, HHT,HTH, THH, TTH, THT, HTT, TTT}
-X = [0,1,2,3] #number of heads we can get
+X = [0,1,2,3] # Number of heads we can get
 
 P_X0 = 1/8   # P(X=0)     {TTT}
 P_X1 = 3/8   # P(X=1)     {HTT, THT, TTH}
@@ -213,7 +213,9 @@ P_Xi = [P_X0, P_X1, P_X2, P_X3]
 
 # Plotting PMF
 sns.barplot(x=X, y=P_Xi)
-plt.title('PMF'); plt.xlabel('Number of Heads'); plt.ylabel('Probability')
+plt.title('PMF')
+plt.xlabel('Number of Heads')
+plt.ylabel('Probability')
 plt.show()
 
 # Plotting CDF or cumulative distribution function
