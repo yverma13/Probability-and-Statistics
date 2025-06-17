@@ -245,17 +245,21 @@ x = np.linspace(0,3,100)
 df2 = pd.DataFrame({'X':[], 'PDF':[], 'CDF':[]})
 df2['X'] = x
 df2['PDF'] = df2['X'].apply(lambda v: k*v**3)
-df2['CDF'] = df2['X'].apply(lambda v: integrate.quad(lambda u: k*u**3, 0, v)[0])
+df2['CDF'] = df2['X'].apply(lambda v: integrate.quad(lambda u: k*u**3, 0 ,v)[0])
 df2.head()
 
 # Plotting PDF
 sns.lineplot(x='X', y='PDF', data=df2)
-plt.title('PDF'); plt.xlabel('X'); plt.ylabel('Probability density')
+plt.title('PDF')
+plt.xlabel('X')
+plt.ylabel('Probability Density')
 plt.show()
 
 # Plotting CDF
-sns.lineplot(x='X', y='CDF', data=df2)
-plt.title('Cummulative distribution function'); plt.xlabel('X'); plt.ylabel('Probability density')
+sns.lineplot(x='X',y='CDF',data=df2)
+plt.title('CDF')
+plt.xlabel('X')
+plt.ylabel('Probability Density')
 plt.show()
 
 ## Approach without using 'integrate' ##
