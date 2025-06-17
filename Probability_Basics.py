@@ -225,20 +225,20 @@ plt.xlabel('Number of heads')
 plt.ylabel('Cumulative Probability')
 plt.show()
 
-# Compute the value of  P(1<X<2) . Such that the density function is given by, f(x)={kx^3 for 0≤x≤3, 0 otherwise 
-# Also, plot the PDF and CDF for random variable  X
+# Compute the value of  P(1<X<2), such that the density function is given by, f(x) = {kx^3 for 0≤x≤3, 0 otherwise 
+# Also, plot the PDF and CDF for random variable X
 
 # ∫ f(x) dx = 1
 # Using the above property we find k,
 # ∫ (k*x**3)dx = 1
 # k = 1 / ∫ (x**3)dx
 
-k = 1 / (integrate.quad(lambda x: x**3,0,3)[0])
+k = 1 / (integrate.quad(lambda x: x**3, 0, 3)[0])
 print('k= ', round(k,4))
 
-# Now the probability density for 1<X<2 is given by,
-P = integrate.quad(lambda x: k*x**3, 1, 2)[0]
-print('P(1<X<2)= ', round(P,4))
+# Now the probability density for 1<X<2 is given by
+P = integrate.quad(lambda x: k*x**3,1,2)[0]
+print('P(1<X<2)= ', round(P, 4))
 
 # Create 100 values within 0 to 3 in order to plot PDF and CDF
 x = np.linspace(0,3,100)
