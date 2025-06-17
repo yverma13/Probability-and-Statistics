@@ -296,15 +296,14 @@ for x in x_values:
 print('Probability P(1 < X < 2):', P_1_to_2)
 
 # Plotting the PDF
-import matplotlib.pyplot as plt
-import numpy as np
-
 x_values = np.linspace(0,3,1000)
+x_values
 y_values = [f(x) for x in x_values]
-plt.plot(x_values, y_values)
-plt.xlabel("x")
-plt.ylabel("f(x)")
-plt.title("Probability Density Function (PDF)")
+y_values
+plt.plot(x_values,y_values)
+plt.xlabel('x')
+plt.ylabel('f(x)')
+plt.title('Probability Density Function (PDF)')
 plt.grid(True)
 plt.show()
 
@@ -312,9 +311,11 @@ plt.show()
 cdf_values = []
 cumulative_prob = 0
 for x in x_values:
-    cumulative_prob += f(x)*dx
+    cumulative_prob += f(x) * dx
     cdf_values.append(cumulative_prob)
 print("CDF:", cdf_values)
+
+
 
 # Plotting the CDF
 plt.plot(x_values, cdf_values)
