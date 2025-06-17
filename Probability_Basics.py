@@ -145,16 +145,21 @@ selection
 
 # As one record is already selected, the records available becomes one less than total records
 df_new = df.drop(selection.index)
+df_new
 
 # count of sewing department records
-sewing = df_new['department']=='sewing'
+sewing = df_new['department'] == 'sewing'
 sewing.value_counts()
 
 df_sewing = df_new[sewing]
+df_sewing
 
-# Probability of selecting sewing department record second = count of sewing department records / (all records count - 1) 
-P_sewing_second_given_finishing_first = len(df_sewing) / len(df_new)
+# Probability of selecting sewing department record second = count of sewing department records / (all records count - 1)
+P_sewing_second_given_non_finishing_first = len(df_sewing) / len(df_new)
 print('P(selecting a sewing department record given finishing department record was selected first)= ', round(P_sewing_second_given_finishing_first,4))
+
+P_non_finishing_sewing = P_non_finishing_first * P_sewing_second_given_non_finishing_first
+print('P(non-finishing record first and sewing record second)= ', round(P_non_finishing_sewing,4))
 
 # Check for dependency
 P_finishing_sewing != P_non_finishing_sewing
