@@ -219,8 +219,10 @@ plt.ylabel('Probability')
 plt.show()
 
 # Plotting CDF or cumulative distribution function
-sns.barplot(x=X, y=np.array(P_Xi).cumsum())
-plt.title('Cumulative Distribution Function'); plt.xlabel('Number of heads'); plt.ylabel('Cumulative Probability')
+sns.barplot(x= X, y= np.array(P_Xi).cumsum())
+plt.title('Cumulative Distribution Function')
+plt.xlabel('Number of heads')
+plt.ylabel('Cumulative Probability')
 plt.show()
 
 # Compute the value of  P(1<X<2) . Such that the density function is given by, f(x)={kx^3 for 0≤x≤3, 0 otherwise 
