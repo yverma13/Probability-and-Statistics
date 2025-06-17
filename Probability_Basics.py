@@ -264,34 +264,36 @@ plt.show()
 
 ## Approach without using 'integrate' ##
 
-# Defining the density function (given as per the question)
+# The approach without 'scipy integrate' involves Riemann Sum
+
+# Defining the density function 
 def f(x):
     if 0 <= x <= 3:
         return x**3
     else:
-        return 0 
+        return 0
     
 # Numerically computing the integral to find k
 def compute_k():
-    k_approx = 0 
-    dx = 0.001  # Small interval for numerical integration
-    x_values = np.arange(0,3,dx)
+    k_approx = 0
+    dx = 0.001  
+    x_values = np.arange(0, 3, dx)
     for x in x_values:
-        k_approx += f(x)*dx 
-    return 1/k_approx
+        k_approx += f(x) * dx
+    return 1 / k_approx
 
 # Computing k
 k = compute_k()
-print("Value of k: ", k)
+print('Value of k: ',k)
 
 # Computing the probability P(1 < X < 2)
 P_1_to_2 = 0
-dx = 0.001
-x_values = np.arange(1,2,dx)
+dx = 0.001  
+x_values = np.arange(1, 2, dx)
 for x in x_values:
-    P_1_to_2 += k*f(x)*dx
+    P_1_to_2 += k * f(x) * dx
 
-print("Probability P(1 < X < 2):", P_1_to_2)
+print('Probability P(1 < X < 2):', P_1_to_2)
 
 # Plotting the PDF
 import matplotlib.pyplot as plt
