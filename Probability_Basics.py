@@ -323,12 +323,10 @@ plt.title("Cumulative Distribution Function (CDF)")
 plt.grid(True)
 plt.show()
 
--- help --
-
 ## Joint PMF ##
 
 # Consider the probability experiment where a fair coin is tossed three times and the sequence of heads and tails are recorded. 
-# Let random variable  X  denote the number of heads obtained and random variable Y denote the winnings earned 
+# Let the random variable X denote the number of heads obtained and random variable Y denote the winnings earned 
 # in a single play of a game with the following rules, based on the outcomes of the probability experiment:
     # a player wins 1 point if first head occurs on the first toss
     # a player wins 2 points if first head occurs on the second toss
@@ -341,7 +339,7 @@ X = [0,1,2,3]
 Y = [-1,1,2,3]
 
 # Represent joint pmf using table
-df3 = pd.DataFrame(columns= ['X=0', 'X=1', 'X=2', 'X=3'], index=['Y=-1', 'Y=1', 'Y=2', 'Y=3'])
+df3 = pd.DataFrame(columns= ['X=0', 'X=1', 'X=2', 'X=3'], index= ['Y=-1', 'Y=1', 'Y=2', 'Y=3'])
 df3
 
 df3.iloc[0,0] = 1/8   # P(X=0, Y=-1)  Cases when no heads has occur {TTT}
@@ -377,4 +375,3 @@ print('P(0 ≤ X ≤ 1/2, 0 ≤ Y ≤ 1/2)= ', round(p,4))
 
 # Cross check the total probability should be ≈ 1
 integrate.dblquad(lambda y,x: x + c*y**2, 0, 1, 0, 1)[0]
-
