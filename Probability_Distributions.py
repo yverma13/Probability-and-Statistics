@@ -9,7 +9,6 @@ sns.set_style('whitegrid')
 import warnings
 warnings.filterwarnings("ignore")
 
-
 ### NORMAL DISTRIBUTION ###
 
 # Plot a normal distribution of size 10000 having mean as 0 and standard deviation as 1
