@@ -33,3 +33,84 @@ The basic terms related to probability are as follows:
 - _Probability density function_: a probability function associated with a continuous random variable.
 
 - _Joint distributions_: the joint probability distribution for X, Y,.. is a probability distribution that gives the probability that each of X, Y,.. falls in any particular range or discrete set of values specified for that variable.
+
+An experiment or trial is any procedure that can be infinitely repeated and has a well-defined set of possible outcomes. An experiment is said to be random if it has more than one possible outcome, and deterministic if it has only one. For example, selecting a record from the above dataset, tossing a coin, rolling a die, etc are all random experiments.
+
+
+Each possible outcome of a particular experiment is unique, and different outcomes are mutually exclusive (only one outcome will occur on each trial of the experiment).
+
+For the experiment where a coin is flipped twice, the four possible outcomes that make up the sample space are (H, T), (T, H), (T, T) and (H, H), where "H" represents a "heads", and "T" represents a "tails".
+
+Similarly, in an experiment of selecting a record from a dataset, the outcome will be that record which got selected.
+
+
+A sample space is usually denoted using set notation, and the possible ordered outcomes are listed as elements in the set. It is common to refer to a sample space by the labels S, Ω, or U (for "universal set"). The elements of a sample space may be numbers, words, letters, or symbols. They can also be finite, countably infinite, or uncountably infinite.
+
+For example, if the experiment is tossing a coin, the sample space is typically the set {head, tail}, commonly written {H, T}. For tossing two coins, the corresponding sample space would be {HH, HT, TH, TT}. Similarly, for a random experiment of selecting a record from a dataset, all the rows become it's sample space.
+
+
+An event is a set of outcomes of an experiment to which a probability is assigned. A single outcome may be an element of many different events, and different events in an experiment are usually not equally likely, since they may include very different groups of outcomes. For example, getting an even number after rolling a die once, getting atleast one head after tossing a coin twice, etc.
+
+
+The probability of an event is a number between 0 and 1, where, roughly speaking, 0 indicates the impossibility of the event and 1 indicates certainty. The probability formula gives the possibility of an event to happen and is given as
+
+Probability of an event occurring=favorable outcomes/total outcomes
+
+
+Two events  A  and  B  are known as mutually exclusive if the probability of occurrence of both the events simultaneously is zero, i.e.  P(A∩B)=0 .
+
+
+Two events are called dependent, if the outcome of the first affects the outcome of the second, such that the probability is changed.
+
+
+Two events  A  and  B  are called independent, if the happening of  A  does not affect the happening of  B . Also, for independent events,
+
+P(A∩B)=P(A).P(B)  will hold true
+
+
+Random variable is basically a function which maps from the set of sample space to set of real numbers. The purpose is to get an idea about result of a particular situation where we are given probabilities of different outcomes.
+
+Formal definition :  X:S−>R 
+
+where,  X  = random variable,  S  = set of sample space,  R  = set of real numbers
+
+
+There are mainly two types of random variables: discrete and continuous as shown in figure below
+
+image
+
+
+A random variable  X  is said to be discrete if it takes on finite number of values. The probability function associated with it is said to be probability mass function or PMF.  P(xi)  = Probability that  (X=xi)  = PMF of  X=pi .
+
+0≤pi≤1 
+∑pi=1  where the sum is taken over all possible values of X
+
+
+A random variable  X  is said to be continuous if it takes on the infinite number of values. The probability function associated with it is said to be PDF or probability density function.
+
+PDF: If  X  is a continuous random variable.
+
+P(x<X<x+dx)=f(x).dx 
+
+0≤f(x);  for all  x 
+∫f(x)dx=1  over all values of  x 
+Then  P(X)  is said to be a PDF of the distribution.
+
+The probability distribution of a continuous random variable  X  is an assignment of probabilities to intervals of decimal numbers using a function  f(x) , called a density function, in the following way: the probability that  X  assumes a value in the interval  (a,b)  is equal to the area of the region that is bounded above by the graph of the equation  y=f(x) , bounded below by the  x -axis, and bounded on the left and right by the vertical lines through  a  and  b , as shown in the figure below image
+
+
+
+Given random variables  X,Y,...,  that are defined on a probability space, the joint probability distribution for  X,Y,...,  is a probability distribution that gives the probability that each of  X,Y,...,  falls in any particular range or discrete set of values specified for that variable. In the case of only two random variables, this is called a bivariate distribution, but the concept generalizes to any number of random variables, giving a multivariate distribution.
+
+The joint probability distribution can be expressed either in terms of a joint cumulative distribution function or in terms of a joint PDF (in the case of continuous variables) or joint PMF (in the case of discrete variables).
+
+
+
+The intuition behind the joint density  f(x,y)  is similar to that of the PDF of a single random variable. For small positive  dx  and  dy , we can write
+
+P(x≤X≤x+dx, y≤Y≤y+dy)=f(x,y).dx.dy 
+
+Also,  ∫∫f(x,y)dxdy=1
+
+
+
